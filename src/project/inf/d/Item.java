@@ -31,4 +31,8 @@ public abstract class Item {
     public Veld getVeld() {
         return veld;
     }
+    
+    public void interactWith(Item it) {
+
+    }
 }

@@ -33,6 +33,10 @@ public class Speler extends Item {
         
     }
     
+    public Richting getLastRi() {
+        return laatsteRichting;
+    }
+    
     public void verhoogMunutie(){
         
     }

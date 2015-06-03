@@ -141,6 +141,7 @@ public class Doolhof extends javax.swing.JPanel {
                         System.out.println("UP!");
 
                         counter.CounterTeller();
+                        speler.beweeg();
 
                         repaint();
                     }
@@ -173,7 +174,7 @@ public class Doolhof extends javax.swing.JPanel {
         if (lvl == 1) {
             String[][] array = {
                 {"W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"},
-                {"W", "o", "o", "W", "W", "o", "o", "o", "o", "o", "o", "o", "o", "W", "o", "o", "o", "o", "W", "W"},
+                {"W", "P", "o", "W", "W", "o", "o", "o", "o", "o", "o", "o", "o", "W", "o", "o", "o", "o", "W", "W"},
                 {"W", "o", "W", "W", "W", "o", "W", "W", "W", "W", "W", "W", "o", "W", "W", "o", "W", "o", "W", "W"},
                 {"W", "o", "o", "W", "W", "o", "W", "W", "W", "W", "o", "o", "o", "o", "o", "o", "W", "o", "W", "W"},
                 {"W", "W", "o", "W", "W", "o", "W", "W", "W", "W", "W", "W", "W", "o", "W", "W", "W", "o", "W", "W"},
@@ -201,6 +202,9 @@ public class Doolhof extends javax.swing.JPanel {
             for (int j = 0; j < array.length; j++) {
                 if (array[i][j].equals("W")) {
                     veldArray[array.length - 1 - i][j].voegItemToe(new Muur());
+                }
+                if (array[i][j].equals("P")) {
+                    veldArray[array.length - 1 - i][j].voegItemToe(speler);
                 }
             }
         }

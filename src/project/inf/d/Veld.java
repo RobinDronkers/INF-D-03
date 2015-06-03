@@ -38,11 +38,23 @@ public class Veld {
         }
     }
     
+    public void addNeighboor(Richting r, Veld v) {
+        veldMap.put(r, v);
+    }
+
+    public Veld getNeighboor(Richting r) {
+        return veldMap.get(r);
+    }
+
+    public Item getItem() {
+        return item;
+    }
+    
     public void beweegItem(Richting r) {
         if (getBuurVeld(r).loopBaar()) {
 
             getBuurVeld(r).interactObjects(item);
-            getBuurVeld(r).addObject(item);
+            getBuurVeld(r).voegItemToe(item);
             verwijderItem();
 
         }

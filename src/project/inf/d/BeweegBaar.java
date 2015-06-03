@@ -11,7 +11,7 @@ package project.inf.d;
 public abstract class BeweegBaar extends Item {
     
     public void Move(Richting r){
-        veld.moveObject(r);
+        veld.beweegItem(r);
     }
     
     @Override
