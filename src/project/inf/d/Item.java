@@ -21,7 +21,7 @@ public abstract class Item {
     }
     
     public void verdwijn(){
-        
+        this.veld.verwijderItem();
     }
 
     public void setVeld(Veld veld) {
@@ -32,6 +32,9 @@ public abstract class Item {
         return veld;
     }
     
+    public void wordBeschoten() {
+
+    }
     public void interactWith(Item it) {
 
     }

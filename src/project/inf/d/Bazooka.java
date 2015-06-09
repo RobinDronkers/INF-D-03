@@ -15,4 +15,9 @@ public class Bazooka extends Item {
         return ItemSoort.Bazooka;
     }
     
+    @Override
+    public void interactWith(Item it) {
+        Speler speler = (Speler)it;
+        speler.setWapen();
+    }
 }

@@ -10,12 +10,23 @@ package project.inf.d;
  */
 public class Valsspeler extends Item {
     
+        Speler Speler;
+
+    public Valsspeler(Speler Speler) {
+        this.Speler = Speler;
+    }
+    
     @Override
     public ItemSoort getType() {
         return ItemSoort.Valsspeler;
     }
     
     public void zetStappenTerug(){
-        
+        Speler.verlaagStappen();
+    }
+    
+    @Override
+    public void wordBeschoten(){
+        verdwijn();
     }
 }

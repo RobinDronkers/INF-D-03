@@ -21,4 +21,10 @@ public class Vriend extends Item {
         return ItemSoort.Vriend;
     }
     
+    @Override
+    public void interactWith(Item it){
+        doolhof.addLvl();
+        doolhof.herstart();
+    }
+    
 }

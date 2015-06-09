@@ -37,6 +37,7 @@ public class Doolhof extends javax.swing.JPanel {
     Speler speler;
     Counter counter;
     Vriend vriend;
+    Valsspeler valsspeler;
 
     Veld[][] veldArray = new Veld[20][20];
     
@@ -198,7 +199,7 @@ public class Doolhof extends javax.swing.JPanel {
                         System.out.println("UP!");
 
                         counter.CounterTeller();
-                        speler.beweeg();
+                        speler.beweeg(Richting.Up);
 
                         repaint();
                     }
@@ -206,13 +207,16 @@ public class Doolhof extends javax.swing.JPanel {
                         System.out.println("RIGHT!");
 
                         counter.CounterTeller();
-
+                        speler.beweeg(Richting.Right);
+                        
                         repaint();
                     }
                     if ((e.getKeyCode() == KeyEvent.VK_LEFT)) {
                         System.out.println("LEFT!");
 
                         counter.CounterTeller();
+                        speler.beweeg(Richting.Left);
+                        
                         repaint();
 
                     }
@@ -220,6 +224,8 @@ public class Doolhof extends javax.swing.JPanel {
                         System.out.println("DOWN!");
 
                         counter.CounterTeller();
+                        speler.beweeg(Richting.Down);
+                        
                         repaint();
 
                     }
@@ -272,9 +278,8 @@ public class Doolhof extends javax.swing.JPanel {
                 if (array[i][j].equals("B")) {
                     veldArray[array.length - 1 - i][j].voegItemToe(new Bazooka());
                 }
-
                 if (array[i][j].equals("Y")) {
-                    veldArray[array.length - 1 - i][j].voegItemToe(new Valsspeler());
+                    veldArray[array.length - 1 - i][j].voegItemToe(new Valsspeler(speler));
                 }
             }
         }
@@ -376,7 +381,12 @@ public class Doolhof extends javax.swing.JPanel {
     }
     
     public void herstart(){
-    
+        speler = new Speler(this);
+        vriend = new Vriend(this);
+        initveldArray();
+        loadLevel();
+        repaint();
+        counter.reset();
     }
     
     public void beweegSpeler(){

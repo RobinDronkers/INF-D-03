@@ -37,7 +37,16 @@ public class Counter extends JLabel {
     public void CounterTeller(){
         count++;
         setText(Integer.toString(count));
+    }
     
+    public void CounterValsspeler(){
+        count--;
+        setText(Integer.toString(count));
+    }
+    
+    public void reset(){
+        count = 0;
+        setText(Integer.toString(count));
     }
 }
 

@@ -137,4 +137,10 @@ public class Veld {
             }
         }
     }
+     
+    public void wordBeschoten() {
+        if (item != null) {
+            item.wordBeschoten();
+        }
+    }
 }

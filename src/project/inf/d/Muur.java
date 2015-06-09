@@ -19,4 +19,9 @@ public class Muur extends Item {
     public boolean Loopbaar(){
         return false;
     }
+    
+    @Override
+    public void wordBeschoten(){
+        verdwijn();
+    }
 }

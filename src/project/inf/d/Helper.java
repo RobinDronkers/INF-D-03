@@ -24,6 +24,10 @@ public class Helper extends Item {
     @Override
     public void interactWith(Item It) {
         Doolhof.vindPad();
-
+    }
+    
+    @Override
+    public void wordBeschoten(){
+        verdwijn();
     }
 }
