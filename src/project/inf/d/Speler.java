@@ -45,6 +45,10 @@ public class Speler extends Item {
         laatsteRichting = r;
     }
     
+    public void setRichting(Richting r) {
+        laatsteRichting = r;
+    }
+    
     public Richting getLastRi() {
         return laatsteRichting;
     }
