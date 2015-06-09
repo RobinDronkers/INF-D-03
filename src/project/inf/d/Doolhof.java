@@ -24,6 +24,15 @@ import javax.swing.JPanel;
  */
 public class Doolhof extends javax.swing.JPanel {
     BufferedImage muurImage;
+    BufferedImage helperImage;
+    BufferedImage playerLeftImage;
+    BufferedImage playerRightImage;
+    BufferedImage playerUpImage;
+    BufferedImage playerDownImage;
+    BufferedImage vriendImage;
+    BufferedImage bazookaImage;
+    BufferedImage valsspelerImage;
+    BufferedImage helperpadImage;
     int lvl;
     Speler speler;
     Counter counter;
@@ -60,26 +69,74 @@ public class Doolhof extends javax.swing.JPanel {
             for (int j = 0; j < veldArray[0].length; j++) {
                 if (veldArray[i][j].getObject() != null) {
                     if (veldArray[i][j].getVisible()) {
-                        if (veldArray[i][j].getObject().getType() == ItemSoort.Muur) {
+                        if (veldArray[i][j].getObject().getType() == ItemSoort.Speler) {
 
+                            Speler player1 = (Speler) veldArray[i][j].getObject();
+                            if (player1.getLastRi() == Richting.Down) {
+                                g.drawImage(playerDownImage, i * 20, j * 20, null);
+                            } else if (player1.getLastRi() == Richting.Left) {
+                                g.drawImage(playerLeftImage, i * 20, j * 20, null);
+                            } else if (player1.getLastRi() == Richting.Up) {
+                                g.drawImage(playerUpImage, i * 20, j * 20, null);
+                            } else if (player1.getLastRi() == Richting.Right) {
+                                g.drawImage(playerRightImage, i * 20, j * 20, null);
+                            }
+                        } else if (veldArray[i][j].getObject().getType() == ItemSoort.Muur) {
                             g.drawImage(muurImage, i * 20, j * 20, null);
-
+                        } else if (veldArray[i][j].getObject().getType() == ItemSoort.Helper) {
+                            g.drawImage(helperImage, i * 20, j * 20, null);
+                        } else if (veldArray[i][j].getObject().getType() == ItemSoort.HelperPad) {
+                            g.drawImage(helperpadImage, i * 20, j * 20, null);
+                        } else if (veldArray[i][j].getObject().getType() == ItemSoort.Vriend) {
+                            g.drawImage(vriendImage, i * 20, j * 20, null);
                         }
                     }
                 }
             }
         }
-
     }
     
     private void loadImages() {
-
+        try {
+            playerLeftImage = ImageIO.read(new File("Player_Left.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        try {
+            playerRightImage = ImageIO.read(new File("Player_Right.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        try {
+            playerDownImage = ImageIO.read(new File("Player_Down.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        try {
+            playerUpImage = ImageIO.read(new File("Player_Up.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
         try {
             muurImage = ImageIO.read(new File("muur.png"));
         } catch (IOException e) {
             System.out.println(e);
         }
-
+        try {
+            helperImage = ImageIO.read(new File("Circle_small.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        try {
+            vriendImage = ImageIO.read(new File("Circle.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        try {
+            helperpadImage = ImageIO.read(new File("Circle_small.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
     
     // Maakt een nieuw veld class voor ieder veld in een doolhof
@@ -206,6 +263,19 @@ public class Doolhof extends javax.swing.JPanel {
                 if (array[i][j].equals("P")) {
                     veldArray[array.length - 1 - i][j].voegItemToe(speler);
                 }
+                if (array[i][j].equals("H")) {
+                    veldArray[array.length - 1 - i][j].voegItemToe(new Helper(this));
+                }
+                if (array[i][j].equals("E")) {
+                    veldArray[array.length - 1 - i][j].voegItemToe(vriend);
+                }
+                if (array[i][j].equals("B")) {
+                    veldArray[array.length - 1 - i][j].voegItemToe(new Bazooka());
+                }
+
+                if (array[i][j].equals("Y")) {
+                    veldArray[array.length - 1 - i][j].voegItemToe(new Valsspeler());
+                }
             }
         }
     }
@@ -226,6 +296,70 @@ public class Doolhof extends javax.swing.JPanel {
                 }
             }
         }
+    }
+    
+    public void vindPad() {
+
+        System.out.println("VINDPAD");
+        ArrayList<Veld> unvisitedList = new ArrayList();
+        ArrayList<Veld> visitedList = new ArrayList();
+
+        int maxDistance = Integer.MAX_VALUE;
+
+        Veld sourcebox = speler.getVeld();
+        sourcebox.distance = 0;
+        unvisitedList.add(sourcebox);
+
+        while (!unvisitedList.isEmpty()) {
+
+            Veld huidigVeld = getVeldMetLaagsteAfstand(unvisitedList);
+
+            unvisitedList.remove(huidigVeld);
+            visitedList.add(huidigVeld);
+
+            evaluateNeighbors(huidigVeld, visitedList, unvisitedList);
+
+        }
+
+        System.out.println("Done pathing");
+        for (int i = 0; i < veldArray.length - 1; i++) {
+            for (int j = 0; j < veldArray[0].length - 1; j++) {
+                if (veldArray[i][j].distance != Integer.MAX_VALUE) {
+                    if (veldArray[i][j].distance < 10) {
+                        System.out.print(veldArray[i][j].distance + " ");
+                    } else {
+                        System.out.print(veldArray[i][j].distance);
+                    }
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println("");
+
+        }
+        maakPad();
+
+    }
+
+    public Veld getVeldMetLaagsteAfstand(ArrayList<Veld> list) {
+
+        int distance = Integer.MAX_VALUE;
+
+        Veld returnVeld = null;
+
+        for (Veld veld : list) {
+
+            if (veld.distance < distance) {
+                if (veld.loopBaar()) {
+                    returnVeld = veld;
+                }
+
+            }
+
+        }
+
+        return returnVeld;
+
     }
     
     public void addLvl(){
@@ -251,5 +385,9 @@ public class Doolhof extends javax.swing.JPanel {
     
     public void vuurSpelerWapen(){
         
+    }
+    
+    public void maakPad() {
+        vriend.getVeld().maakPad();
     }
 }

@@ -103,4 +103,38 @@ public class Veld {
     public Item getObject() {
         return item;
     }
+    
+     public Veld LagereAfstandBuur() {
+
+        Veld veld = new Veld(0, 0);
+        veld.distance = Integer.MAX_VALUE;
+
+        for (Map.Entry<Richting, Veld> veldEntry : veldMap.entrySet()) {
+            if (distance != 1) {
+                if (veldEntry.getValue().distance != 0 && veldEntry.getValue().distance < veld.distance) {
+                    veld = veldEntry.getValue();
+                }
+            }
+            else{
+                if(veldEntry.getValue().distance<veld.distance){
+                    veld = veldEntry.getValue();
+                }
+            }
+        }
+
+        return veld;
+
+    }
+     
+     public void maakPad() {
+        
+
+        System.out.println(distance);
+        if (distance != 0) {
+            LagereAfstandBuur().maakPad();
+            if (item == null) {
+                voegItemToe(new HelperPad());
+            }
+        }
+    }
 }
