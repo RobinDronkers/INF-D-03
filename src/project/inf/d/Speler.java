@@ -40,12 +40,12 @@ public class Speler extends Item {
     //werkt niet moet nog aangepast worden
     public void beweeg(Richting r){
     if (laatsteRichting == r) {
-            this.Move(r);
+            this.Beweeg(r);
         }
         laatsteRichting = r;
     }
     
-    public void Move(Richting r){
+    public void Beweeg(Richting r){
         veld.beweegItem(r);
     }
     
