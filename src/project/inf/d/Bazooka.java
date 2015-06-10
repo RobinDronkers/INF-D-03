@@ -20,4 +20,9 @@ public class Bazooka extends Item {
         Speler speler = (Speler)it;
         speler.setWapen();
     }
+    
+    @Override
+    public void wordBeschoten(){
+        verdwijn();
+    }
 }

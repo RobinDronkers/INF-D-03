@@ -90,6 +90,8 @@ public class Doolhof extends javax.swing.JPanel {
                             g.drawImage(helperpadImage, i * 20, j * 20, null);
                         } else if (veldArray[i][j].getObject().getType() == ItemSoort.Vriend) {
                             g.drawImage(vriendImage, i * 20, j * 20, null);
+                        } else if (veldArray[i][j].getObject().getType() == ItemSoort.Bazooka) {
+                            g.drawImage(bazookaImage, i * 20, j * 20, null);
                         }
                     }
                 }
