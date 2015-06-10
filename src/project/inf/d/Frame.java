@@ -43,8 +43,8 @@ public class Frame extends JFrame {
         
     }
     
-    public void restart(){
-        
+    public void herstart(){
+        doolhof.herstart();
     }
 }
 

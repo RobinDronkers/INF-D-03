@@ -29,11 +29,20 @@ public class RestartButton extends JButton {
         this.setText("Restart");
         setVisible(true);
         this.setFocusable(false);
+        ButtonPressed();
                 
     }
     
     public void ButtonPressed() {
-        
-        
+
+        this.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Execute when button is pressed
+                System.out.println("button pressed!");
+                frame.herstart();
+            }
+        });
     }
 }
