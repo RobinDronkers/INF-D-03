@@ -138,6 +138,11 @@ public class Doolhof extends javax.swing.JPanel {
         } catch (IOException e) {
             System.out.println(e);
         }
+        try {
+            bazookaImage = ImageIO.read(new File("Bazooka.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
     }
     
     // Maakt een nieuw veld class voor ieder veld in een doolhof

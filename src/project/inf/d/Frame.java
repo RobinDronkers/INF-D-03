@@ -28,7 +28,7 @@ public class Frame extends JFrame {
         setVisible(true);
         this.setResizable(false);
         
-        /*controlPanel = new Panel(this);
+        controlPanel = new Panel(this);
         this.counter=controlPanel.counter;
         doolhof = new Doolhof(1,counter);
         doolhof.setBounds(0, 35, 400, 400);
@@ -37,9 +37,9 @@ public class Frame extends JFrame {
         add(doolhof);
         add(controlPanel);
         doolhof.requestFocus();
-        */
         
-        levelButtonPanel = new JPanel();
+        
+        /*levelButtonPanel = new JPanel();
         levelButtonPanel.setBackground(Color.black);
         levelButtonPanel.setFocusable(false);
         add(levelButtonPanel);
@@ -49,11 +49,11 @@ public class Frame extends JFrame {
         int posy = 95;
         
         for (i = 1; i < 4; i++) {
-            levelButtonPanel.add(new NextLevelButton(i, this, posy));
+                levelButtonPanel.add(new NextLevelButton(i, this, posy));
             
             posy = posy + 70;
             
-        }
+        }*/
     }
     
     public void setLevel() {
