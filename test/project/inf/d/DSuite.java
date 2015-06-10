@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
  * @author dunyamin
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({project.inf.d.ItemTest.class, project.inf.d.RichtingTest.class, project.inf.d.BazookaTest.class, project.inf.d.VriendTest.class, project.inf.d.VeldTest.class, project.inf.d.BeweegBaarTest.class, project.inf.d.FrameTest.class, project.inf.d.LevelButtonTest.class, project.inf.d.RestartButtonTest.class, project.inf.d.MuurTest.class, project.inf.d.MainTest.class, project.inf.d.VolgendeButtonTest.class, project.inf.d.ItemSoortTest.class, project.inf.d.SpelerTest.class, project.inf.d.PanelTest.class, project.inf.d.CounterTest.class, project.inf.d.DoolhofTest.class, project.inf.d.ValsspelerTest.class, project.inf.d.HelperPadTest.class, project.inf.d.HelperTest.class})
+@Suite.SuiteClasses({project.inf.d.ItemTest.class, project.inf.d.RichtingTest.class, project.inf.d.BazookaTest.class, project.inf.d.VriendTest.class, project.inf.d.VeldTest.class, project.inf.d.FrameTest.class, project.inf.d.LevelButtonTest.class, project.inf.d.RestartButtonTest.class, project.inf.d.MuurTest.class, project.inf.d.MainTest.class, project.inf.d.VolgendeButtonTest.class, project.inf.d.ItemSoortTest.class, project.inf.d.SpelerTest.class, project.inf.d.PanelTest.class, project.inf.d.CounterTest.class, project.inf.d.DoolhofTest.class, project.inf.d.ValsspelerTest.class, project.inf.d.HelperPadTest.class, project.inf.d.HelperTest.class})
 public class DSuite {
 
     @BeforeClass
