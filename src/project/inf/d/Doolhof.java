@@ -92,6 +92,8 @@ public class Doolhof extends javax.swing.JPanel {
                             g.drawImage(vriendImage, i * 20, j * 20, null);
                         } else if (veldArray[i][j].getObject().getType() == ItemSoort.Bazooka) {
                             g.drawImage(bazookaImage, i * 20, j * 20, null);
+                        } else if (veldArray[i][j].getObject().getType() == ItemSoort.Valsspeler) {
+                            g.drawImage(valsspelerImage, i * 20, j * 20, null);
                         }
                     }
                 }
@@ -142,6 +144,11 @@ public class Doolhof extends javax.swing.JPanel {
         }
         try {
             bazookaImage = ImageIO.read(new File("Bazooka.png"));
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+        try {
+            valsspelerImage = ImageIO.read(new File("valsspeler.png"));
         } catch (IOException e) {
             System.out.println(e);
         }
