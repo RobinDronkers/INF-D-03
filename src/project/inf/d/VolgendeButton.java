@@ -14,7 +14,7 @@ import javax.swing.JButton;
  *
  * @author Robin
  */
-public class NextLevelButton extends JButton {
+public class VolgendeButton extends JButton {
     
     int height = 25;
     int width = 150;
@@ -22,7 +22,7 @@ public class NextLevelButton extends JButton {
     int posy;
     Frame frame;
 
-    public NextLevelButton(int posx, int posy, Frame frame) {
+    public VolgendeButton(int posx, int posy, Frame frame) {
         this.frame = frame;
         this.posx = posy;
         this.posy = posy;
@@ -34,6 +34,14 @@ public class NextLevelButton extends JButton {
     }
 
     public void ButtonPressed() {
-        
+        this.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //Execute when button is pressed
+                System.out.println("button pressed!");
+                frame.volgende();
+            }
+        });
     }
 }

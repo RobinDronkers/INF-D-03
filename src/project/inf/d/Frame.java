@@ -22,24 +22,13 @@ public class Frame extends JFrame {
     Doolhof doolhof;
     JPanel levelButtonPanel;
     
-    public Frame() {
+    public Frame() {        
+        
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(410, 470);
         setVisible(true);
-        this.setResizable(false);
-        
-        controlPanel = new Panel(this);
-        this.counter=controlPanel.counter;
-        doolhof = new Doolhof(1,counter);
-        doolhof.setBounds(0, 35, 400, 400);
-        //pnl.setBounds(0, 0, 400, 25);
-        
-        add(doolhof);
-        add(controlPanel);
-        doolhof.requestFocus();
-        
-        
-        /*levelButtonPanel = new JPanel();
+
+        levelButtonPanel = new JPanel();
         levelButtonPanel.setBackground(Color.black);
         levelButtonPanel.setFocusable(false);
         add(levelButtonPanel);
@@ -47,24 +36,27 @@ public class Frame extends JFrame {
         this.setResizable(false);
         
         int posy = 95;
-        
         for (i = 1; i < 4; i++) {
-                levelButtonPanel.add(new NextLevelButton(i, this, posy));
+            levelButtonPanel.add(new LevelButton(i, this, posy));
             
             posy = posy + 70;
             
-        }*/
+        }
     }
     
-    public void setLevel() {
-        
+    public void setLevel(int level) {
+        buttonClicked(level);
+    }
+    
+    public void volgende(){
+        doolhof.volgende();
     }
     
     public void herstart(){
         doolhof.herstart();
     }
     
-        public void buttonClicked(int lvl) {
+    public void buttonClicked(int lvl) {
         levelButtonPanel.setVisible(false);
         
         

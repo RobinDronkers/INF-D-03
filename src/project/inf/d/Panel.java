@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  */
 public class Panel extends JPanel {
 
-    NextLevelButton next;
+    VolgendeButton volgende;
     RestartButton restart;
     Counter counter;
 
@@ -21,12 +21,12 @@ public class Panel extends JPanel {
         // this.setMaximumSize(new Dimension(400, 400));
         this.setMinimumSize(new Dimension(500, 25));
         this.setBounds(0, 0, 500, 25);
-        next = new NextLevelButton(0, 0,frame);
+        volgende = new VolgendeButton(0, 0,frame);
         restart = new RestartButton(150, 0, frame);
         counter = new Counter(300, 0);
         this.setBackground(Color.black);
 
-        add(next);
+        add(volgende);
         add(restart);
         add(counter);
         setVisible(true);
