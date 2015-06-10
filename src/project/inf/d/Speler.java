@@ -61,7 +61,7 @@ public class Speler extends Item {
         
     }
     
-    public void verlaagStappen(){
+    public void verhoogStappen(){
         //moet nog dynamisch gemaakt worden, momenteel is het maar -1 stap
         doolhof.counter.CounterValsspeler();
     }

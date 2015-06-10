@@ -243,6 +243,13 @@ public class Doolhof extends javax.swing.JPanel {
                         repaint();
 
                     }
+                    
+                    if ((e.getKeyCode() == KeyEvent.VK_SPACE)) {
+                        System.out.println("POW!");
+                        speler.vuurBazooka();
+                        repaint();
+
+                    }
             }
         });
     }

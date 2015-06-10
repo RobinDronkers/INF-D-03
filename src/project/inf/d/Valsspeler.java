@@ -11,6 +11,7 @@ package project.inf.d;
 public class Valsspeler extends Item {
     
         Speler Speler;
+        Counter Counter;
 
     public Valsspeler(Speler Speler) {
         this.Speler = Speler;
@@ -22,7 +23,7 @@ public class Valsspeler extends Item {
     }
     
     public void zetStappenTerug(){
-        Speler.verlaagStappen();
+        Speler.verhoogStappen();
     }
     
     @Override

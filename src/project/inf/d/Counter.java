@@ -40,7 +40,7 @@ public class Counter extends JLabel {
     }
     
     public void CounterValsspeler(){
-        count--;
+        count =+ 10;
         setText(Integer.toString(count));
     }
     
