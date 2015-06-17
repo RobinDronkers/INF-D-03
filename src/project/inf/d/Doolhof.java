@@ -363,6 +363,10 @@ public class Doolhof extends javax.swing.JPanel {
         }
     }
     
+    public Speler getSpeler() {
+        return speler;
+    }
+    
     private void evaluateNeighbors(Veld veld, ArrayList<Veld> visitedList, ArrayList<Veld> unvisitedList) {
         for (Map.Entry<Richting, Veld> destinationEntry : veld.getVeldMap().entrySet()) {
             if (destinationEntry.getValue() != null) {

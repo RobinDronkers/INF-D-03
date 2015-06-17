@@ -1,27 +1,32 @@
+package project.inf.d;
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package project.inf.d;
-
-import org.junit.*;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import static org.junit.Assert.*;
+import project.inf.d.*;
 
 /**
  *
- * @author dunyamin
+ * @author Robin
  */
 public class SpelerTest {
     
     public SpelerTest() {
     }
-
+    
     @BeforeClass
-    public static void setUpClass() throws Exception {
+    public static void setUpClass() {
     }
-
+    
     @AfterClass
-    public static void tearDownClass() throws Exception {
+    public static void tearDownClass() {
     }
     
     @Before
@@ -31,119 +36,97 @@ public class SpelerTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of getType method, of class Speler.
-     */
+    
     @Test
-    public void testGetType() {
-        System.out.println("getType");
-        Speler instance = null;
-        ItemSoort expResult = null;
-        ItemSoort result = instance.getType();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void WalkTest1(){
+        Counter counter = new Counter(0, 0);
+        Doolhof doolhof = new Doolhof(100, counter);
+        Speler speler = doolhof.getSpeler();
+        doolhof.getVeldArray()[10][10].voegItemToe(speler);
+        Veld veld = speler.getVeld();
+        speler.setRichting(Richting.Left);
+        speler.beweeg(Richting.Left);
+        
+        assertEquals(veld.getNeighboor(Richting.Left).getObject(), speler);
+        assertEquals(speler.getLastRi(), Richting.Left);
+        
+        
+        
+        
+        
+    }
+    
+    @Test
+    public void WalkTest2(){
+        Counter counter = new Counter(0, 0);
+        Doolhof doolhof = new Doolhof(100, counter);
+        Speler speler = doolhof.getSpeler();
+        doolhof.getVeldArray()[10][10].voegItemToe(speler);
+        Veld veld = speler.getVeld();
+        speler.setRichting(Richting.Left);
+        veld.getNeighboor(Richting.Left).voegItemToe(new Muur());
+        speler.beweeg(Richting.Left);
+        
+        assertEquals(veld, speler.getVeld());
+        assertEquals(speler.getLastRi(), Richting.Left);
+        
+        
+        
+        
+        
+    }
+    @Test
+    public void WalkTest3(){
+        Counter counter = new Counter(0, 0);
+        Doolhof doolhof = new Doolhof(100, counter);
+        Speler speler = doolhof.getSpeler();
+        doolhof.getVeldArray()[10][10].voegItemToe(speler);
+        Veld veld = speler.getVeld();
+        speler.setRichting(Richting.Right);
+        speler.beweeg(Richting.Left);
+        
+        assertEquals(veld, speler.getVeld());
+        assertEquals(speler.getLastRi(), Richting.Left);
+        
+    }
+    @Test
+    public void WalkTest4(){
+        Counter counter = new Counter(0, 0);
+        Doolhof doolhof = new Doolhof(100, counter);
+        Speler speler = doolhof.getSpeler();
+        doolhof.getVeldArray()[10][10].voegItemToe(speler);
+        Veld veld = speler.getVeld();
+        speler.setRichting(Richting.Left);
+        speler.beweeg(Richting.Right);
+        
+        assertEquals(veld, speler.getVeld());
+        assertEquals(speler.getLastRi(), Richting.Left);
+        
+        
+        
+    }
+    
+    @Test
+    public void Shoot(){
+        Counter counter = new Counter(0, 0);
+        Doolhof doolhof = new Doolhof(100, counter);
+        Speler speler = doolhof.getSpeler();
+        doolhof.getVeldArray()[10][10].voegItemToe(speler);
+        Veld veld = speler.getVeld();
+        
+        speler.setWapen();
+        
+        veld.getNeighboor(Richting.Left).voegItemToe(new Muur());
+        speler.setRichting(Richting.Left);
+        speler.vuurBazooka();
+        
+        assertEquals(veld.getNeighboor(Richting.Left).getObject(), null);
+        
     }
 
-    /**
-     * Test of vuurBazooka method, of class Speler.
-     */
-    @Test
-    public void testVuurBazooka() {
-        System.out.println("vuurBazooka");
-        Speler instance = null;
-        instance.vuurBazooka();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setWapen method, of class Speler.
-     */
-    @Test
-    public void testSetWapen() {
-        System.out.println("setWapen");
-        Speler instance = null;
-        instance.setWapen();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of beweeg method, of class Speler.
-     */
-    @Test
-    public void testBeweeg_1args_1() {
-        System.out.println("beweeg");
-        Richting r = null;
-        Speler instance = null;
-        instance.beweeg(r);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of Beweeg method, of class Speler.
-     */
-    @Test
-    public void testBeweeg_1args_2() {
-        System.out.println("Beweeg");
-        Richting r = null;
-        Speler instance = null;
-        instance.Beweeg(r);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setRichting method, of class Speler.
-     */
-    @Test
-    public void testSetRichting() {
-        System.out.println("setRichting");
-        Richting r = null;
-        Speler instance = null;
-        instance.setRichting(r);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLastRi method, of class Speler.
-     */
-    @Test
-    public void testGetLastRi() {
-        System.out.println("getLastRi");
-        Speler instance = null;
-        Richting expResult = null;
-        Richting result = instance.getLastRi();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of verhoogMunutie method, of class Speler.
-     */
-    @Test
-    public void testVerhoogMunutie() {
-        System.out.println("verhoogMunutie");
-        Speler instance = null;
-        instance.verhoogMunutie();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of verlaagStappen method, of class Speler.
-     */
-    @Test
-    public void testVerlaagStappen() {
-        System.out.println("verlaagStappen");
-        Speler instance = null;
-        instance.verhoogStappen();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    // TODO add test methods here.
+    // The methods must be annotated with annotation @Test. For example:
+    //
+    // @Test
+    // public void hello() {}
 }

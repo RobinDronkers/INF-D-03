@@ -21,9 +21,11 @@ public class Valsspeler extends Item {
     public ItemSoort getType() {
         return ItemSoort.Valsspeler;
     }
-        
-    public void zetStappenTerug(){
-        Speler.verhoogStappen();
+      
+    @Override
+    public void interactWith(Item it) {
+         Speler speler = (Speler)it;
+         Speler.verhoogStappen();
     }
     
     @Override
