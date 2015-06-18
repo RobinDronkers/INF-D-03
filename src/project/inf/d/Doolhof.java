@@ -462,10 +462,6 @@ public class Doolhof extends javax.swing.JPanel {
         return veldArray;
     }
     
-    public void startSpel(){
-        
-    }
-    
     public void volgende(){
         addLvl();
         herstart();
@@ -478,10 +474,6 @@ public class Doolhof extends javax.swing.JPanel {
         loadLevel();
         repaint();
         counter.reset();
-    }
-    
-    public void vuurSpelerWapen(){
-        
     }
     
     public void maakPad() {

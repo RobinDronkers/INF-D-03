@@ -14,7 +14,6 @@ public class Speler extends Item {
     
     Richting laatsteRichting = Richting.Down;
     Doolhof doolhof;
-    BeweegBaar beweegbaar;
     boolean wapen = false;
 
     public Speler(Doolhof doolhof) {
@@ -55,10 +54,6 @@ public class Speler extends Item {
     
     public Richting getLastRi() {
         return laatsteRichting;
-    }
-    
-    public void verhoogMunutie(){
-        
     }
     
     public void verhoogStappen(){
